@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'images.apps.ImagesConfig',
+    # 'full.python.path.to.your.app.foo.apps.FooConfig',
+    'django.contrib.foo',
 ]
 
 MIDDLEWARE = [
