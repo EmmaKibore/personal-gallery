@@ -1,15 +1,17 @@
 # Personal Gallery
-This is an online gallery where I post my personal pictures and people can view them online, read about their details and copy the link to share with others, 05/2019
+This is an online gallery where I can post my personal pictures and people are allowed to  view and read about their details online.They can also copy and share the link.
+
 By Emma Kibore
 
 ## Description
-This is an online gallery where I post my personal pictures and people can view them online, read about their details and copy the link to share with others.
+This is an online gallery where I can post my personal pictures and people are allowed to  view and read about their details online.They can also copy and share the link.
 
 ## BDD
-Behavior- Our program should handle:	Input Example- When it receives:	Output Example- It should return:
-View Image Details	Click on Image	Image Full size with details
-Search for image by category or location	Enter search word and submit	Display Images
-
+|Behaviour-Our program should handle:|Input Example-When it receives|Output Example-Should Return|
+|------------------------------------|------------------------------|----------------------------|
+|View Image details                  |Click on the image            |Full Size image with details|
+|Search by Category or location      |Enter search word and submit  | Display images             |
+|------------------------------------|------------------------------|----------------------------|
 ## Setup/Installation Requirements
 Fork the data onto your own personal repository.
 Clone Project to your machine
