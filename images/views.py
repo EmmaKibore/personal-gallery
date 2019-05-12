@@ -5,7 +5,7 @@ import datetime as dt
 def welcome(request):
     return render(request, 'welcome.html')
 
-def newsToday(request):
+def imagesToday(request):
     date = dt.date.today()
     news = Article.news_today(date)
     return render(request, 'all-news/today-news.html', {"date": date,"news":news})
@@ -36,7 +36,7 @@ def past_days_images(request,past_date):
     if date == dt.date.today():
         return redirect(images_today)
 
-    images = Article.days_news(date)    
+    images = Article.days_images(date)    
     return render(request, 'all-news/past-news.html',{"date": date,"news":news})           
 
     # day = convert_dates(date)
