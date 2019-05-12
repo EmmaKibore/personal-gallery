@@ -7,8 +7,8 @@ def welcome(request):
 
 def imagesToday(request):
     date = dt.date.today()
-    news = Article.news_today(date)
-    return render(request, 'all-news/today-news.html', {"date": date,"news":news})
+    images = Article.images_today(date)
+    return render(request, 'all-images/today-images.html', {"date": date,"images":images})
 
 
 
@@ -37,7 +37,7 @@ def past_days_images(request,past_date):
         return redirect(images_today)
 
     images = Article.days_images(date)    
-    return render(request, 'all-news/past-news.html',{"date": date,"news":news})           
+    return render(request, 'all-images/past-images.html',{"date": date,"images":images})           
 
     # day = convert_dates(date)
     # html = f'''
@@ -56,15 +56,15 @@ def search_results(request):
         searched_articles = Article.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-news/search.html',{"message":message,"articles": searched_articles})
+        return render(request, 'all-images/search.html',{"message":message,"articles": searched_articles})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all-news/search.html',{"message":message})  
+        return render(request, 'all-images/search.html',{"message":message})  
 
 def article(request,article_id):
     try:
         article = Article.objects.get(id = article_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"all-news/article.html", {"article":article})                     
+    return render(request,"all-images/article.html", {"article":article})                     
