@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 import datetime as dt
 
 def newsToday(request):
@@ -20,7 +20,7 @@ def newsToday(request):
 
 
 
-def past_days_news(request,past_date):
+def past_days_images(request,past_date):
     try:
         # Converts data from the string Url
         date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
@@ -31,9 +31,9 @@ def past_days_news(request,past_date):
         assert False
 
     if date == dt.date.today():
-        return redirect(news_today)
+        return redirect(images_today)
 
-    news = Article.days_news(date)    
+    images = Article.days_news(date)    
     return render(request, 'all-news/past-news.html',{"date": date,"news":news})           
 
     # day = convert_dates(date)
