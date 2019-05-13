@@ -31,17 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'images',
-    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'images.apps.ImagesConfig',
-    # 'full.python.path.to.your.app.foo.apps.FooConfig',
-    'django.contrib.foo',
+    'images',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'personalgallery',
-        'USER': 'personalgallery',
+        'USER': 'emmah',
         'PASSWORD': 'Cookie12',
     }
 }
@@ -128,3 +125,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# configuring the location for media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
