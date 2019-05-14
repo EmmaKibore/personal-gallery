@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    {{block.super}}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                    <div class="carousel-item  active ">
+                            <img src="http://www.selectcitywalk.com/wp-content/uploads/2017/09/Gallery.jpg" alt="pass" width="1300" height="500">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h1 style="font-family: 'Oregano', cursive; padding-bottom: 150px;">EMMASTONE'S PERSONAL GALLERY <br><br>  <small style="color: white;">Trending Searches:  Food, Calamities, Nature <br><br> 
+                                <h4 style="font-family: 'Oregano', cursive; ">“Photography takes an instance out of time, altering life by holding it still.”</h4>
+                            </div>
+                    </div>
+
+                
+            
+                
+                
+              </div>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+    {% for image in images %}
+    <div class="col-md-4"> 
+       
+        <div class="card-deck">
+                <div class="card">
+                <img class="card-img-top" src="{{ image.image_path.url }}" alt="Image" id="img{{image.id}}" data-toggle="modal" data-target="#{{image.id}}" style="height:500px; width:450px;"> 
+                  <div class="card-body">
+                    <h5 class="card-title">{{image.image_name}}</h5>
+                  </div>
+                </div>
+                </div>
+    </div>
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{image.image_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                        <img src="{{ image.image_path.url }}" alt="Image" id="img{{photo.id}}"  style="height:500px; width: 500px;">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="row">
+        <h1 class="text-center">No Uploaded Images</h1>
+    </div>
+    {% endfor %}
+   
+
+
+
+<script>
+        function copyLink( id ) {
+            /* Get the text field */
+            var copyText = document.getElementById( "thislinkhere-" + id );
+            /* Select the text field */
+            copyText.select();
+            /* Copy the text inside the text field */
+            document.execCommand( "copy" );
+            /* Alert the copied text */
+            alert( "Don't forget to share this link: " + copyText.value );
+            }
+        
+        </script>
+</div>
+</div>
+{% endblock %}
