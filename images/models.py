@@ -12,10 +12,10 @@ class Location(models.Model):
     def __str__(self):
        return self.location
        
-    def save_locations(self):
+    def save_location(self):
         self.save()
 
-    def delete_locations(self):
+    def delete_location(self):
         self.delete()
 
 class Category(models.Model):
@@ -24,10 +24,10 @@ class Category(models.Model):
     Photo category model
     '''
     
-    name = models.CharField(max_length=120)
+    image_category = models.CharField(max_length=120)
 
     def __str__(self):
-       return self.name
+       return self.image_category
     
     def save_category(self):
         self.save()
@@ -41,20 +41,16 @@ class Image(models.Model):
     Images model
     '''
     
-    image = models.ImageField(upload_to='photos/')
+    image_path = models.ImageField(upload_to='images/')
     
     image_name = models.CharField(max_length=30, blank=False)
-    description = models.TextField(max_length=100, blank=False)
-    category = models.ManyToManyField(Category)
-    pub_date_posted = models.DateTimeField(auto_now_add=True)
-    location = models.ForeignKey(Location)
+    description = models.TextField(max_length=100, blank=True)
+    category = models.ForeignKey(Category)
+    location = models.ForeignKey(Location, blank=True)
 
     def __str__(self):
        return self.image_name
-    # ordering data everytime we query the database might be very tedoius. It thus makes available a Meta subclass in any models to specify model-specific options.
-    # I used the - minus sign before the order by parameter. This returns the objects in reverse order.
-    class Meta:
-        ordering = ['-pub_date_posted']
+    
 
     def save_image(self):
         self.save()
@@ -68,12 +64,16 @@ class Image(models.Model):
         return images
 
     @classmethod
-    def filter_category(cls,query):
-        images = cls.objects.filter(category__name=query)
+    def search_image(cls, search_category):
+        images = cls.objects.filter(category__category_name__icontains=search_category)
         return images
 
     @classmethod
-    def search_by_category(cls, search_term):
-        images = cls.objects.filter(category__name__icontains = search_term).order_by('-pub_date_posted')
+    def filter_by_location(cls):
+        images = cls.objects.order_by('location')
         return images
+
+    
+
+    
 
