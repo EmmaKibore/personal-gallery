@@ -20,8 +20,8 @@ def search_page(request):
     view function to open search page and display searched images
     '''
 
-    if 'search' in request.GET and request.GET["search"]:
-        search_term = request.GET.get("search")
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
         images = Image.search_image(search_term)
         message = f"{search_term}"
 

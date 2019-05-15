@@ -69,5 +69,5 @@ class Image(models.Model):
 
     @classmethod
     def filter_by_location(cls):
-        images = cls.objects.order_by('category')
+        images = cls.objects.order_by('location')
         return images
