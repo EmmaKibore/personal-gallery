@@ -28,7 +28,7 @@ def search_page(request):
         return render(request, 'search.html', {"message": message, "images": images})
 
     else:
-        message = "You haven't searched for any term"
+        message = "You haven't searched for any item"
         return render(request, 'search.html',{"message":message})
 
 def sortby_locations(request):

@@ -42,7 +42,6 @@ class Image(models.Model):
     '''
     
     image_path = models.ImageField(upload_to='images/')
-    
     image_name = models.CharField(max_length=30, blank=False)
     description = models.TextField(max_length=100, blank=True)
     category = models.ForeignKey(Category)
@@ -65,15 +64,10 @@ class Image(models.Model):
 
     @classmethod
     def search_image(cls, search_category):
-        images = cls.objects.filter(category__category_name__icontains=search_category)
+        images = cls.objects.filter(category__image_category__icontains = search_category)
         return images
 
     @classmethod
     def filter_by_location(cls):
-        images = cls.objects.order_by('location')
+        images = cls.objects.order_by('category')
         return images
-
-    
-
-    
-
