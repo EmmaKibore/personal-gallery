@@ -43,7 +43,7 @@ class Image(models.Model):
     
     image_path = models.ImageField(upload_to='images/')
     image_name = models.CharField(max_length=30, blank=False)
-    description = models.TextField(max_length=100, blank=True)
+    description = models.TextField(max_length=200, blank=True)
     category = models.ForeignKey(Category)
     location = models.ForeignKey(Location, blank=True)
 
